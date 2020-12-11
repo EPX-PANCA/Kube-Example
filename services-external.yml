@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: firebase-service
+  labels:
+    name: firebase-service
+spec:
+  type: ExternalName
+  externalName: praktik-ut.firebaseio.com
+  ports:
+    - port: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: gmail-service
+  labels:
+    name: gmail-service
+spec:
+  type: ExternalName
+  externalName: smtp.gmail.com
+  ports:
+    - port: 587
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-service
+spec:
+  ports:
+    - protocol: TCP
+      port : 80
+      targetPort: 80
+
+---
+
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: external-service
+subsets:
+  - addresses:
+    - ip: 172.16.85.58
+    ports:
+    - port: 3306
+  - addresses:
+    - ip: 172.16.40.207
+    ports:
+    - port: 3306
+  - addresses:
+    - ip: 172.16.37.98
+    ports:
+    - port: 6379
