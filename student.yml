@@ -81,5 +81,5 @@ spec:
     app: praktik-student
   ports:
   - port: 8080
-    targetPort: 8080
+    targetPort: 8088
     nodePort: 30006
