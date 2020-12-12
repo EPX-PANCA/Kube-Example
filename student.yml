@@ -1,0 +1,84 @@
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: student-env-secret
+# stringData:
+#   APP_NAME: student
+#   TYPEORM_CONNECTION: mysql
+#   TYPEORM_HOST: 172.16.85.58
+#   TYPEORM_PORT: 3306
+#   TYPEORM_USERNAME: apppraktik
+#   TYPEORM_PASSWORD: praktik
+#   TYPEORM_DATABASE: db_praktik_2020_v1
+#   TYPEORM_MIGRATIONS: "src/infrastructure/persistence/migrations/*.ts"
+#   TYPEORM_MIGRATIONS_DIR: src/infrastructure/persistence/migrations
+#   MONGO_HOST: mongodb://admin:mongab369aspx@172.16.85.58:27017/db_praktik_2020_v2?authSource:admin
+#   MONGO_PORT: 27017
+#   MONGO_COLLECTION: praktik
+#   TYPEORM_HOST_SRS: 172.16.40.207
+#   TYPEORM_PORT_SRS: 3306
+#   TYPEORM_USERNAME_SRS: developer
+#   TYPEORM_PASSWORD_SRS: dev
+#   TYPEORM_DATABASE_SRS: ut_srs_4g_V1_17
+#   MAILER_HOST: smtp.gmail.com
+#   MAILER_PORT: 587
+#   MAILER_USER: praktik.ut@gmail.com
+#   MAILER_PASS: praktik2020
+#   REDIS_HOST: 172.16.37.98
+#   REDIS_PORT: 6379
+#   DATABASE_URL: https://praktik-ut.firebaseio.com
+#   SERVICE_ACCOUNT_PATH: /usr/src/app/praktik-ut.json
+  
+# ---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student
+  labels:
+    app: praktik
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: praktik-student
+  template:
+    metadata:
+      labels:
+        app: praktik-student
+    spec:
+      containers:
+      - name: praktik-student
+        image: praktikut/praktik-student:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 8080
+        # envFrom:
+        #   - secretRef:
+        #       name: student-env-secret
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8088
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 5
+          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: praktik-student
+spec:
+  type: NodePort
+  selector:
+    app: praktik-student
+  ports:
+  - port: 8080
+    targetPort: 8088
+    nodePort: 30006
