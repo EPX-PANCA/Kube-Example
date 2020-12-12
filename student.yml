@@ -59,15 +59,15 @@ spec:
         # envFrom:
         #   - secretRef:
         #       name: student-env-secret
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8080
-          initialDelaySeconds: 0
-          periodSeconds: 10
-          timeoutSeconds: 5
-          successThreshold: 1
-          failureThreshold: 5
+#         readinessProbe:
+#           httpGet:
+#             path: /
+#             port: 8080
+#           initialDelaySeconds: 0
+#           periodSeconds: 10
+#           timeoutSeconds: 5
+#           successThreshold: 1
+#           failureThreshold: 5
           
 ---
 
