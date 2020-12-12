@@ -32,7 +32,8 @@
 # ---
 
 apiVersion: apps/v1
-kind: Deployment
+# kind: Deployment
+kind: ReplicaSet
 metadata:
   name: student
   labels:
