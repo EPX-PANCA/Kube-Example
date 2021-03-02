@@ -8,7 +8,7 @@
 #### Step 1
 
 ```sh
-sudo apt-get update && sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common gnupg2`
+sudo apt-get update && sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common gnupg2
 ```
 
 #### Step 2
@@ -139,7 +139,7 @@ kubectl get nodes
 
 #### Step 5
 ```sh
-Copy file config kubernetes
+Copy file config kubernetes (file config akan digunakan di Lens)
 
 Masuk ke directory home
 
