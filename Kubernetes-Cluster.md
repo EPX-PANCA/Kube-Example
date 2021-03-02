@@ -114,16 +114,21 @@ sudo apt-mark hold kubelet kubeadm kubectl
 > kubeadm init --pod-network-cidr=10.244.0.0/16 --
 apiserver-advertise-address IP_ADDRESS_SERVER_MASTER_TANPA_HTTP
 
-> Jika sudah nanti muncul token, simpan tokennya.
-[contoh token]
+> Jika sudah nanti muncul token, simpan tokennya
+
+> [contoh token]
 kubeadm join 172.16.35.221:6443 --token 0fnkri.rabw4e3kv6600ing \
 --discovery-token-ca-cert-hash sha256:a83d6276d5643c03a5936b5a040aa3341179b50bd8e0997b396e18a6b0b99579
 
 > Lanjut 😎
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-kubectl create -f [https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml) --namespace=kube-system
+
+> mkdir -p $HOME/.kube
+
+> sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+
+> sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+> kubectl create -f [https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml) --namespace=kube-system
 
 
 #### Step 3 
