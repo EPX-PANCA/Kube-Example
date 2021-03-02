@@ -1,6 +1,6 @@
 # Membuat Kubernetes Cluster
 ## (Docker, Kubeadm, Kubelet, Kubectl)
->> Author Panca Putra Pahlawan
+> Author Panca Putra Pahlawan
 ---
 
 ### INSTALL DOCKER
@@ -73,7 +73,7 @@ sudo systemctl status docker
 
 ## KUBERNETES CLUSTER
 
->> Catatan : swap harus off permanen, agar saat Master/Control Plan di Restart container dapat berjalan kembali dengan baik. Caranya (ubuntu), sudo nano /etc/fstab
+> Catatan : swap harus off permanen, agar saat Master/Control Plan di Restart container dapat berjalan kembali dengan baik. Caranya (ubuntu), sudo nano /etc/fstab
 lalu comment, atau hapus baris yg berisi swap atau swap.img, lalu save. setelah itu, 
 sudo swapoff -a
 
@@ -91,7 +91,7 @@ EOF
 ```sh
 sudo sysctl --system
 ```
->> Jika IP v6 di non aktifkan, maka tidak perlu di tambahkan.
+> Jika IP v6 di non aktifkan, maka tidak perlu di tambahkan.
 
 #### Step 2
 
@@ -106,19 +106,19 @@ sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
->> bisa juga di install kubernetes-cni
+> bisa juga di install kubernetes-cni
 
 
->> STEP KHUSUS MASTER/CONTROL PLANE
+> STEP KHUSUS MASTER/CONTROL PLANE
 kubeadm init --pod-network-cidr=10.244.0.0/16 --
 apiserver-advertise-address IP_ADDRESS_SERVER_MASTER_TANPA_HTTP
 
->> Jika sudah nanti muncul token, simpan tokennya.
+> Jika sudah nanti muncul token, simpan tokennya.
 [contoh token]
 kubeadm join 172.16.35.221:6443 --token 0fnkri.rabw4e3kv6600ing \
 --discovery-token-ca-cert-hash sha256:a83d6276d5643c03a5936b5a040aa3341179b50bd8e0997b396e18a6b0b99579
 
->> Lanjut 😎
+> Lanjut 😎
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
