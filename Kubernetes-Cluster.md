@@ -133,12 +133,12 @@ kubeadm join 172.16.35.221:6443 --token 0fnkri.rabw4e3kv6600ing \
 
 #### Step 3 
 ```sh
-Copy Token yang didapat dari controlplan atau master, di dalam server worker lalu enter.
+Copy Token yang didapat dari controlplan atau master, paste di dalam server worker lalu enter.
 ```
 
 #### Step 4
 ```sh
-Check Nodes server sudah ready atau belum dengan perintah :
+Check Nodes server sudah ready atau belum dengan perintah (jalankan perintah ini di server Master) :
 
 kubectl get nodes
 ```
@@ -146,7 +146,7 @@ kubectl get nodes
 #### Step 5
 ```sh
 Copy file config kubernetes (file config akan digunakan di Lens)
-
+(Jalankan perintah ini di server Master)
 Masuk ke directory home
 
 cat /.kube/config
