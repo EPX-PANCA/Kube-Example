@@ -110,7 +110,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 
 > STEP KHUSUS MASTER/CONTROL PLANE
-kubeadm init --pod-network-cidr=10.244.0.0/16 --
+> kubeadm init --pod-network-cidr=10.244.0.0/16 --
 apiserver-advertise-address IP_ADDRESS_SERVER_MASTER_TANPA_HTTP
 
 > Jika sudah nanti muncul token, simpan tokennya.
