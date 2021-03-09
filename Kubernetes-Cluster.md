@@ -14,7 +14,7 @@ sudo apt-get update && sudo apt-get install -y apt-transport-https ca-certificat
 #### Step 2
 
 ```sh
-curl -fsSL [https://download.docker.com/linux/ubuntu/gpg](https://download.docker.com/linux/ubuntu/gpg) | sudo apt-key --keyring /etc/apt/trusted.gpg.d/docker.gpg add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key --keyring /etc/apt/trusted.gpg.d/docker.gpg add -
 ```
 
 #### Step 3
@@ -150,4 +150,16 @@ Copy file config kubernetes (file config akan digunakan di Lens)
 Masuk ke directory home
 
 cat /.kube/config
+```
+
+---
+### Tambahan
+[Command dibawah di jalankan di Master/Control Plane]
+Menambahkan label/nama pada worker
+```sh
+kubectl label node namaservernya node-role.kubernetes.io/worker=worker
+```
+Get Token Baru Untuk Join Worker
+```sh
+kubeadm token create --print-join-command
 ```
