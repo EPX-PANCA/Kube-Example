@@ -155,6 +155,8 @@ cat /.kube/config
 ---
 ### Tambahan
 [Command dibawah di jalankan di Master/Control Plane]
+
+
 Menambahkan label/nama pada worker
 ```sh
 kubectl label node namaservernya node-role.kubernetes.io/worker=worker
